@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 연속부분수열 {
+public class 최대길이연속부분수열 {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
 		int N = Integer.parseInt(st.nextToken());
-		int M = Integer.parseInt(st.nextToken());
+		int K = Integer.parseInt(st.nextToken());
 		int[] arr = new int[N];
 
 		st = new StringTokenizer(br.readLine());
@@ -20,19 +20,21 @@ public class 연속부분수열 {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 
-		// 투 포인터 + 슬라이딩 윈도우
-		int lt = 0, sum = 0, answer = 0;
-		for (int rt = 0; rt < N; rt++) {
-			sum += arr[rt];
-
-			if (sum == M)
-				answer++;
-
-			while (sum >= M) {
-				sum -= arr[lt++];
-				if(sum == M)
-					answer++;
+		// 투포인터 적용
+		int lt = 0, answer = 0, cnt = 0;
+		for (int rt = 0; rt < arr.length; rt++) {
+			if (arr[rt] == 0) {
+				cnt++;
 			}
+
+			// K를 다 사용했을 경우
+			while (cnt > K) {
+				if (arr[lt++] == 0) {
+					cnt--;
+				}
+			}
+
+			answer = Math.max(answer, rt - lt + 1);
 		}
 
 		System.out.println(answer);
