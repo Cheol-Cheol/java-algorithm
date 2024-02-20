@@ -1,0 +1,5 @@
+# 이름 기준 오름차순 / 보호 날짜 기준 내림차순
+
+SELECT ANIMAL_ID, NAME, DATETIME
+FROM ANIMAL_INS
+ORDER BY 2, 3 DESC

@@ -1,0 +1,11 @@
+# 총 주문량 3000 이상
+# 주 성분이 과일
+# 총 주문량 기준 내림차순
+
+SELECT FH.FLAVOR
+FROM FIRST_HALF FH
+         JOIN ICECREAM_INFO II
+              ON FH.FLAVOR = II.FLAVOR
+WHERE FH.TOTAL_ORDER >= 3000
+  AND II.INGREDIENT_TYPE = 'fruit_based'
+ORDER BY FH.TOTAL_ORDER DESC

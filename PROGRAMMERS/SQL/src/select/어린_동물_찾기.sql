@@ -1,0 +1,7 @@
+# 젊은 동물 조회
+# 아이디 순 오름차순
+
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE INTAKE_CONDITION != 'Aged'
+ORDER BY 1;

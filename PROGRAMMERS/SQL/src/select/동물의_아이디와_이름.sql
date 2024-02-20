@@ -1,0 +1,5 @@
+# 아이디 기준 오름차순 정렬
+
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+ORDER BY 1;
