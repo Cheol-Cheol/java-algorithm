@@ -1,0 +1,4 @@
+# 가장 최근에 들어온 동물 조회
+
+SELECT MAX(DATETIME) 시간
+FROM ANIMAL_INS

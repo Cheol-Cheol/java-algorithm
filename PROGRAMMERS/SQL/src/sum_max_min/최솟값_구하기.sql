@@ -1,0 +1,4 @@
+# 가장 먼저 들어온 동물 조회 MIN
+
+SELECT MIN(DATETIME) 시간
+FROM ANIMAL_INS

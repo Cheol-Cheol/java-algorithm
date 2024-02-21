@@ -1,0 +1,5 @@
+# 가장 높은 판매가 출력
+# 컬럼명은 MAX_PRICE로 지정
+
+SELECT MAX(PRICE) MAX_PRICE
+FROM PRODUCT
