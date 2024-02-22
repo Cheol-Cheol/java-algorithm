@@ -1,0 +1,7 @@
+# 이름이 없는 채로 들어온 동물 조회
+# 아이디는 오름차순
+
+SELECT ANIMAL_ID
+FROM ANIMAL_INS
+WHERE NAME IS NULL
+ORDER BY 1

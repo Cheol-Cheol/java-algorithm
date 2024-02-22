@@ -1,0 +1,6 @@
+# 나이 정보가 없는 회원 카운트
+# 컬럼명은 USERS 지정
+
+SELECT COUNT(*) USERS
+FROM USER_INFO
+WHERE AGE IS NULL

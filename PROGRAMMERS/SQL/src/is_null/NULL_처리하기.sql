@@ -1,0 +1,6 @@
+# 이름이 없는 동물은 No name 표시
+# 아이디 기준 오름차순
+
+SELECT ANIMAL_TYPE, IFNULL(NAME, 'No name') NAME, SEX_UPON_INTAKE
+FROM ANIMAL_INS
+ORDER BY ANIMAL_ID
