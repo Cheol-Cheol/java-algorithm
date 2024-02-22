@@ -1,0 +1,8 @@
+# 이름에 EL이 들어가는 강아지 조회
+# 이름 오름차순
+
+SELECT ANIMAL_ID, NAME
+FROM ANIMAL_INS
+WHERE ANIMAL_TYPE = 'Dog'
+  AND NAME LIKE '%EL%'
+ORDER BY 2
