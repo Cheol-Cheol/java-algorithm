@@ -1,0 +1,23 @@
+# 차종 세단 or SUV = IN
+# 2022년 11월 1일 ~ 11월 30일 = SubQuery
+# 30일 이상 = WHERE
+# 50만원 <= 대여 금액 < 200만원 = HAVING
+# 대여 금액 (FEE) = 집계함수
+# 대여 금액 기준 내림차순 / 차종 기준 오름차순 / 아이디 기준 내림차순
+
+SELECT C.CAR_ID, C.CAR_TYPE, ROUND(30 * C.DAILY_FEE * (100 - P.DISCOUNT_RATE) / 100, 0) FEE
+FROM CAR_RENTAL_COMPANY_CAR C
+         JOIN CAR_RENTAL_COMPANY_RENTAL_HISTORY H
+              ON C.CAR_ID = H.CAR_ID
+         JOIN CAR_RENTAL_COMPANY_DISCOUNT_PLAN P
+              ON P.CAR_TYPE = C.CAR_TYPE
+WHERE C.CAR_ID NOT IN (SELECT CAR_ID
+                       FROM CAR_RENTAL_COMPANY_RENTAL_HISTORY
+                       WHERE START_DATE < '2022-12-01'
+                         AND END_DATE > '2022-11-01')
+  AND P.DURATION_TYPE = '30일 이상'
+  AND C.CAR_TYPE IN ('세단', 'SUV')
+GROUP BY C.CAR_ID
+HAVING FEE >= 500000 AND FEE < 2000000
+ORDER BY FEE DESC, CAR_TYPE, CAR_ID DESC
+
