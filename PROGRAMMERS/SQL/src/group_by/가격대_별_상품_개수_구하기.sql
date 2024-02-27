@@ -1,0 +1,8 @@
+# 만원 단위의 가격대 별 상품 개수 조회
+# 가격대 정보는 각 구간의 최소금액으로
+# 가격대 기준 오름차순
+
+SELECT FLOOR(PRICE/10000) * 10000 PRICE_GROUP, COUNT(*) PRODUCT
+FROM PRODUCT
+GROUP BY PRICE_GROUP
+ORDER BY PRICE_GROUP

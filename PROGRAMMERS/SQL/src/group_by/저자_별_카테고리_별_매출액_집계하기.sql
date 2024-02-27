@@ -1,0 +1,13 @@
+# 2022년 1월 도서 판매 데이터 기준
+# 저자 별, 카테고리 별 매출액(판매량 * 판매가) 조회
+# 저자 아이디 기준 오름차순 / 카테고리 기준 내림차순
+
+SELECT A.AUTHOR_ID, A.AUTHOR_NAME, CATEGORY, SUM(B.PRICE * S.SALES) TOTAL_SALES
+FROM AUTHOR A
+         JOIN BOOK B
+              ON A.AUTHOR_ID = B.AUTHOR_ID
+         JOIN BOOK_SALES S
+              ON S.BOOK_ID = B.BOOK_ID
+WHERE S.SALES_DATE BETWEEN '2022-01-01' AND '2022-01-31'
+GROUP BY AUTHOR_NAME, CATEGORY
+ORDER BY 1, 3 DESC
