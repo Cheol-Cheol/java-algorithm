@@ -8,17 +8,12 @@ import java.util.StringTokenizer;
 public class b3003 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        StringTokenizer st;
-        int[] chess = new int[]{1, 1, 2, 2, 2, 8};
-
-        st = new StringTokenizer(br.readLine(), " ");
-        for (int i = 0; i < chess.length; i++) {
-            int item = Integer.parseInt(st.nextToken());
-
-            sb.append(chess[i] - item).append(" ");
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int[] pieces = new int[6];
+        int[] targets = new int[]{1, 1, 2, 2, 2, 8};
+        for (int i = 0; i < 6; i++) {
+            pieces[i] = Integer.parseInt(st.nextToken());
+            System.out.print(targets[i] - pieces[i] + " ");
         }
-
-        System.out.println(sb);
     }
 }
